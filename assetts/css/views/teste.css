@@ -1,0 +1,16 @@
+/* Tela: Teste (aplicação da tarefa em tela cheia) */
+.test-stage { display: none; position: fixed; inset: 0; z-index: 20; flex-direction: column; align-items: center; justify-content: center; gap: 30px; background: #0c1416; color: #eef3f4; }
+.test-stage.on { display: flex; }
+.test-top { position: absolute; top: 18px; left: 22px; right: 22px; display: flex; justify-content: space-between; color: #9db0ac; font-size: 13px; }
+.test-top a { color: inherit; }
+.stimulus {
+  display: flex; align-items: center; justify-content: center;
+  width: min(44vw, 230px); height: min(44vw, 230px);
+  border: 3px solid #2c3e3e; border-radius: 28px;
+  font: 800 min(16vw, 110px) var(--font);
+  transition: transform .06s;
+}
+.stimulus.go { border-color: #38b8ac; color: #38b8ac; }
+.stimulus.nogo { border-color: #ec8279; color: #ec8279; }
+.stimulus.pressed { transform: scale(.93); }
+.test-stage .btn { padding: 16px 40px; font-size: 16px; }
