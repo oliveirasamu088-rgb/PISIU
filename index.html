@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Psilog: testes de atenção sustentada (go/no-go), cadastro de pacientes, resultados e percentis. Funciona 100% no navegador.">
+  <title>Psilog</title>
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/professional.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views/inicio.css">
+  <link rel="stylesheet" href="css/views/teste.css">
+  <link rel="stylesheet" href="css/views/resultados.css">
+  <link rel="stylesheet" href="css/views/aparencia.css">
+  <link rel="stylesheet" href="css/views/tour.css">
+  <link rel="stylesheet" href="css/views/auth.css">
+  <!-- Temas por último para sobrescrever cores fixas dos componentes e telas. -->
+  <link rel="stylesheet" href="css/themes.css">
+
+  <!-- Aplica o tema antes da primeira pintura (evita "flash" de cor). -->
+  <script src="js/core/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Ir para o conteúdo</a>
+
+  <div class="app-shell">
+    <aside class="app-sidebar" aria-label="Navegação principal">
+      <a class="brand" href="#/inicio">
+        <img src="assets/img/logo.png" alt="" width="34" height="34">
+        <span>psilog<small>PLATAFORMA CLÍNICA</small></span>
+      </a>
+
+      <div class="sidebar-label">ESPAÇO DE TRABALHO</div>
+      <nav class="sidebar-nav">
+        <a href="#/inicio" data-route="inicio"><span class="nav-ico">⌂</span> Visão geral</a>
+        <a href="#/cadastro" data-route="cadastro" data-only="pro"><span class="nav-ico">＋</span> Novo exame</a>
+        <a href="#/tarefas" data-route="tarefas"><span class="nav-ico">◎</span> Tarefas cognitivas</a>
+        <a href="#/pacientes" data-route="pacientes" data-only="pro"><span class="nav-ico">♙</span> Pacientes</a>
+        <a href="#/atividades" data-route="atividades" data-only="pro"><span class="nav-ico">✦</span> Atividades</a>
+        <a href="#/resultados" data-route="resultados"><span class="nav-ico">▥</span> Resultados</a>
+        <a href="#/resumo" data-route="resumo" data-only="pro"><span class="nav-ico">▤</span> Resumo clínico</a>
+      </nav>
+
+      <div class="sidebar-label sidebar-label-lower">SISTEMA</div>
+      <nav class="sidebar-nav">
+        <a href="#/dados" data-route="dados" data-only="pro"><span class="nav-ico">▣</span> Dados e backups</a>
+        <a href="#/aparencia" data-route="aparencia"><span class="nav-ico">◐</span> Preferências</a>
+        <a href="#/tour" data-route="tour"><span class="nav-ico">ⓘ</span> Ajuda e tour</a>
+        <a href="#/login" id="logout" data-route="logout"><span class="nav-ico">⏻</span> Sair</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="privacy-dot"></div>
+        <div><b>Dados neste dispositivo</b><small>Armazenamento local</small></div>
+      </div>
+    </aside>
+
+    <section class="app-main">
+      <header class="topbar">
+        <div class="topbar-context">
+          <span class="topbar-kicker">AMBIENTE DE AVALIAÇÃO</span>
+          <span class="topbar-title">Psilog <span>/</span> <b id="current-section">Visão geral</b></span>
+        </div>
+        <div class="topbar-actions">
+          <span id="who" class="who"></span>
+          <span class="local-status"><i></i> Ambiente local</span>
+          <button type="button" id="theme-toggle" title="Trocar tema" aria-label="Trocar tema">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+          </button>
+          <button type="button" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+        </div>
+        <nav class="site-nav" id="site-nav" aria-label="Principal" hidden>
+          <a href="#/inicio" data-route="inicio">Visão geral</a>
+          <a href="#/cadastro" data-route="cadastro" data-only="pro">Novo exame</a>
+          <a href="#/tarefas" data-route="tarefas">Tarefas cognitivas</a>
+          <a href="#/resultados" data-route="resultados">Resultados</a>
+          <a href="#/resumo" data-route="resumo" data-only="pro">Resumo clínico</a>
+          <a href="#/pacientes" data-route="pacientes" data-only="pro">Pacientes</a>
+          <a href="#/atividades" data-route="atividades" data-only="pro">Atividades</a>
+          <a href="#/dados" data-route="dados" data-only="pro">Dados e backups</a>
+          <a href="#/aparencia" data-route="aparencia">Preferências</a>
+          <a href="#/tour" data-route="tour">Ajuda e tour</a>
+        </nav>
+      </header>
+      <main id="app" tabindex="-1"></main>
+      <footer class="app-footer">Psilog <span>•</span> Ferramenta de apoio à avaliação — utilize os resultados em conjunto com o julgamento profissional.</footer>
+    </section>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript><p style="padding:24px">O Psilog precisa de JavaScript habilitado.</p></noscript>
+
+  <!-- Núcleo -->
+  <script src="js/core/namespace.js"></script>
+  <script src="js/core/utils.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="js/core/firebase-config.js"></script>
+  <script src="js/core/cloud.js"></script>
+  <script src="js/core/db.js"></script>
+  <script src="js/core/auth.js"></script>
+  <script src="js/core/stats.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/data/tasks.js"></script>
+
+  <!-- Telas -->
+  <script src="js/views/login.js"></script>
+  <script src="js/views/login-cloud.js"></script>
+  <script src="js/views/inicio.js"></script>
+  <script src="js/views/cadastro.js"></script>
+  <script src="js/views/tarefas.js"></script>
+  <script src="js/views/teste.js"></script>
+  <script src="js/views/resultados.js"></script>
+  <script src="js/views/resumo.js"></script>
+  <script src="js/views/dados.js"></script>
+  <script src="js/views/aparencia.js"></script>
+  <script src="js/views/tour.js"></script>
+  <script src="js/views/pacientes.js"></script>
+  <script src="js/views/atividades.js"></script>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* Tela: Tour interativo (tudo com prefixo .tour para não colidir com o app) */
+.tour-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; padding: 0 0 14px; }
+.tour-head h1 { margin: 0; font-size: 28px; }
+.tour-head p { margin: 4px 0 0; color: var(--mu); font-size: 14px; }
+.tour-head a { color: var(--ac); font-weight: 700; text-decoration: none; }
+
+.tour-wrap { display: grid; grid-template-columns: 210px 1fr; gap: 18px; }
+.tour-tabs { display: flex; flex-direction: column; gap: 6px; }
+.tour-tabs button { padding: 12px 14px; background: var(--s); border: 1px solid var(--bd); border-radius: 12px; color: var(--fg); font: 600 14px var(--font); text-align: left; cursor: pointer; transition: .15s; }
+.tour-tabs button:hover { transform: translateX(3px); border-color: var(--ac); }
+.tour-tabs button.on { background: var(--ac); color: var(--ai); border-color: var(--ac); }
+.tour-tabs small { display: block; font-weight: 400; font-size: 11.5px; opacity: .75; }
+
+.tour-win { overflow: hidden; background: var(--s); border: 1px solid var(--bd); border-radius: var(--r); box-shadow: 0 12px 32px rgba(0, 0, 0, .12); }
+.tour-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; background: var(--ac); color: var(--ai); font-size: 13px; }
+.tour-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--ai); opacity: .5; }
+.tour-bar span { margin-left: 8px; opacity: .9; }
+.tour-screen { min-height: 340px; padding: 22px; animation: view-in .3s ease; }
+.tour-caption { padding: 14px 22px; background: var(--s2); border-top: 1px solid var(--bd); color: var(--mu); font-size: 14px; }
+.tour-caption b { color: var(--fg); }
+.tour-caption code { padding: 1px 6px; background: var(--bd); border-radius: 5px; font-size: 12.5px; }
+
+.tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.tour-card { padding: 14px; background: var(--s2); border: 1px solid var(--bd); border-radius: 12px; color: var(--fg); font: inherit; text-align: left; cursor: pointer; transition: .15s; }
+.tour-card:hover, .tour-card.sel { transform: translateY(-3px); border-color: var(--ac); box-shadow: 0 8px 18px rgba(0, 0, 0, .1); }
+.tour-card.sel { background: var(--ac); color: var(--ai); }
+.tour-card.static { cursor: default; }
+.tour-card b { display: block; }
+.tour-card span { font-size: 12px; opacity: .75; }
+.tour-card.static:hover { transform: none; box-shadow: none; border-color: var(--bd); }
+
+.tour-screen label { display: block; margin-bottom: 12px; }
+.tour-screen input { display: block; width: 100%; margin-top: 4px; }
+.tour-screen h3 { margin: 0 0 14px; }
+.tour-center { text-align: center; }
+.tour-stim { display: flex; align-items: center; justify-content: center; width: 130px; height: 130px; margin: 10px auto; border: 3px solid var(--ac); border-radius: 22px; color: var(--ac); font: 800 64px var(--font); transition: transform .08s; }
+.tour-stim.nogo { border-color: var(--da); color: var(--da); }
+.tour-stim.pressed { transform: scale(.92); }
+.tour-screen .btn { background: var(--ac); color: var(--ai); box-shadow: none; border-radius: 9px; padding: 11px 20px; }
+.tour-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
+.tour-stats div { padding: 8px 14px; background: var(--s2); border: 1px solid var(--bd); border-radius: 10px; color: var(--mu); font-size: 12px; }
+.tour-stats b { display: block; color: var(--fg); font: 800 20px var(--font); }
+.tour-bars { display: flex; align-items: flex-end; gap: 4px; height: 130px; padding: 12px; background: var(--s2); border-radius: 12px; }
+.tour-bars i { flex: 1; background: var(--ac); border-radius: 4px 4px 0 0; cursor: pointer; transition: .15s; }
+.tour-bars i:hover { background: var(--wa); }
+.tour-timeline { display: flex; flex-wrap: wrap; gap: 3px; margin: 12px 0; }
+.tour-timeline span { width: 16px; height: 16px; border-radius: 4px; }
+.tour-row { cursor: pointer; }
+.tour-row:hover { background: var(--s2); }
+.tour-hint { min-height: 20px; margin-top: 12px; color: var(--mu); font-size: 13px; }
+.tour-toast { display: none; margin-top: 14px; padding: 11px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: 14px; }
+.tour-toast.on { display: block; }
+
+@media (max-width: 720px) {
+  .tour-wrap { grid-template-columns: 1fr; }
+  .tour-tabs { flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
+  .tour-tabs button { white-space: nowrap; }
+  .tour-tabs small { display: none; }
+}

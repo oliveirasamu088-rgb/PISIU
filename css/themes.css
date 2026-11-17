@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Temas. O tema ativo fica em <html data-theme="...">.
+   Disponíveis: light (padrão), warm (amarelo), orange (laranja), dark
+   ========================================================================== */
+
+[data-theme="light"] {
+  --bg: #f3f4f1; --s: #fbfbf9; --s2: #eef0ec;
+  --fg: #2b3438; --mu: #66717a; --bd: #dfe3df;
+  --ac: #0d8077; --ai: #fff;
+  --grad: linear-gradient(135deg, #4fc3b5, #7c85e8);
+}
+[data-theme="light"] body::before {
+  background:
+    radial-gradient(700px 360px at 85% -8%, rgba(124, 133, 232, .12), transparent),
+    radial-gradient(600px 340px at 8% 0, rgba(79, 195, 181, .12), transparent);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0e10; --s: #11181b; --s2: #162024;
+  --fg: #e7f1ee; --mu: #9db0ac; --bd: #1f2e33;
+  --ac: #2dd4bf; --ai: #042f2e;
+  --ok: #5fcf8f; --wa: #e2b253; --da: #ec8279;
+  color-scheme: dark;
+}
+
+[data-theme="warm"] {
+  --bg: #f4ead0; --s: #faf3e0; --s2: #efe3c1;
+  --fg: #3b3426; --mu: #7a6d52; --bd: #e0d1a8;
+  --ac: #a8680c; --ai: #fff8e6;
+  --ok: #4d7a2a; --wa: #a8680c; --da: #a8402f;
+  --grad: linear-gradient(135deg, #efbb55, #dc8a38);
+}
+[data-theme="warm"] body::before {
+  background:
+    radial-gradient(700px 360px at 85% -8%, rgba(220, 138, 56, .16), transparent),
+    radial-gradient(600px 340px at 8% 0, rgba(239, 187, 85, .2), transparent);
+}
+
+[data-theme="orange"] {
+  --bg: #fbe7d4; --s: #fff3e6; --s2: #f7ddc2;
+  --fg: #3d2a1c; --mu: #86644b; --bd: #edcaa8;
+  --ac: #c2410c; --ai: #fff4ea;
+  --ok: #4d7a2a; --wa: #b45309; --da: #a3302a;
+  --grad: linear-gradient(135deg, #f7a553, #e0622b);
+}
+[data-theme="orange"] body::before {
+  background:
+    radial-gradient(700px 360px at 85% -8%, rgba(224, 98, 43, .16), transparent),
+    radial-gradient(600px 340px at 8% 0, rgba(247, 165, 83, .2), transparent);
+}
+
+/* Ajustes finos por tema */
+[data-theme="warm"] .btn:not(.g):not(.d) { color: #35230a; box-shadow: 0 8px 22px -10px rgba(168, 104, 12, .55); }
+[data-theme="orange"] .btn:not(.g):not(.d) { color: #3a1604; box-shadow: 0 8px 22px -10px rgba(194, 65, 12, .55); }
+[data-theme="warm"] .band { color: #2a2010; }
+[data-theme="orange"] .band { color: #2a1408; }
+[data-theme="warm"] .site-header,
+[data-theme="orange"] .site-header { background: color-mix(in srgb, var(--bg) 80%, transparent); }
+
+/* Camada global de temas para o layout profissional: nenhum painel fica preso ao branco. */
+[data-theme="light"] {
+  --page: #f4f7f6; --panel: #ffffff; --panel-soft: #f0f5f3;
+  --sidebar: #173b36; --sidebar-fg: #eaf5f1; --sidebar-muted: #a9c9c0;
+  --topbar: rgba(255,255,255,.94); --accent-soft: #e9f4ef;
+  --heading: #203b34; --muted-soft: #71827d;
+}
+[data-theme="dark"] {
+  --bg: #080b0d; --s: #111619; --s2: #191f23;
+  --fg: #edf3f1; --mu: #a6b4b0; --bd: #293438;
+  --ac: #43d7c2; --ai: #062c29; --grad: linear-gradient(135deg,#1ab7a5,#626de8);
+  --page: #080b0d; --panel: #111619; --panel-soft: #191f23;
+  --sidebar: #05090b; --sidebar-fg: #edf3f1; --sidebar-muted: #9db5ae;
+  --topbar: rgba(8,11,13,.96); --accent-soft: #172c2a;
+  --heading: #f0f6f4; --muted-soft: #a6b4b0;
+  color-scheme: dark;
+}
+[data-theme="warm"] {
+  --page: #f4ead0; --panel: #faf3e0; --panel-soft: #efe3c1;
+  --sidebar: #514326; --sidebar-fg: #fff8e6; --sidebar-muted: #e3d2a8;
+  --topbar: rgba(250,243,224,.94); --accent-soft: #f0e2bd;
+  --heading: #3b3426; --muted-soft: #7a6d52;
+}
+[data-theme="orange"] {
+  --page: #fbe7d4; --panel: #fff3e6; --panel-soft: #f7ddc2;
+  --sidebar: #63351f; --sidebar-fg: #fff4ea; --sidebar-muted: #f0c3a2;
+  --topbar: rgba(255,243,230,.94); --accent-soft: #f8dcc4;
+  --heading: #3d2a1c; --muted-soft: #86644b;
+}
+
+html, body, .app-shell, .app-main, #app, .view { background-color: var(--page, var(--bg)); color: var(--fg); }
+.app-sidebar { background: var(--sidebar) !important; color: var(--sidebar-fg); }
+.brand, .sidebar-nav a, .sidebar-footer b { color: var(--sidebar-fg); }
+.brand small, .sidebar-label, .sidebar-footer small { color: var(--sidebar-muted); }
+.sidebar-nav a[aria-current="page"] { background: color-mix(in srgb, var(--ac) 25%, var(--sidebar)); }
+.topbar { background: var(--topbar) !important; border-color: var(--bd); }
+.topbar-kicker, .topbar-title, .topbar-title b, .topbar-title span { color: var(--mu) !important; }
+.local-status { border-color: var(--bd); color: var(--mu); }
+.topbar button { background: var(--panel) !important; color: var(--fg) !important; border-color: var(--bd); }
+.card, .metric, .tile, .professional-tile, .appearance-card { background: var(--panel); color: var(--fg); border-color: var(--bd); }
+.metric { background: var(--panel-soft); }
+.view h1, .view h2, .view h3, .tile b, .professional-tile b { color: var(--heading); }
+input, select, textarea { background: var(--panel-soft); color: var(--fg); border-color: var(--bd); }
+.app-footer, .note, .empty, .tile span { color: var(--muted-soft); }
+.metric-symbol, .professional-tile .dash-icon, .note-mark { background: var(--accent-soft); color: var(--ac); }
+.tile-feature, .dashboard-note { background: var(--panel-soft); border-color: var(--bd); }
+.dashboard-note b, .dashboard-note p, .dashboard-note a { color: var(--fg); }
+.btn { background: var(--grad); }
+[data-theme="dark"] .app-main, [data-theme="dark"] #app, [data-theme="dark"] .view,
+[data-theme="dark"] .app-footer { background-color: #080b0d; }
+[data-theme="dark"] .card, [data-theme="dark"] .metric, [data-theme="dark"] .tile,
+[data-theme="dark"] .professional-tile, [data-theme="dark"] .appearance-card { box-shadow: 0 8px 28px rgba(0,0,0,.28); }
+[data-theme="dark"] .tile-feature, [data-theme="dark"] .dashboard-note { background: #151c1f; border-color: #293438; }
+[data-theme="dark"] .topbar-title b { color: #edf3f1 !important; }
+
+/* Correção global: propaga a paleta para todas as áreas da aplicação. */
+html, body { min-height: 100%; background: var(--page, var(--bg)) !important; }
+body, .app-shell, .app-main, #app, .view { color: var(--fg); }
+.app-main, #app, .view, .app-footer { background-color: var(--page, var(--bg)) !important; }
+.app-sidebar { background: var(--sidebar) !important; color: var(--sidebar-fg) !important; }
+.topbar { background: var(--topbar) !important; color: var(--fg) !important; }
+.card, .metric, .dash-metric, .tile, .professional-tile, .appearance-card,
+.tour-win, .tour-card, .tour-stats div { background-color: var(--panel) !important; color: var(--fg); border-color: var(--bd) !important; }
+.metric, .tour-caption, .tour-bars, .bars, .timeline,
+input, select, textarea, .btn.g { background-color: var(--panel-soft) !important; color: var(--fg) !important; border-color: var(--bd) !important; }
+.view h1, .view h2, .view h3, .view p, .view label, .view td, .view th,
+.view strong, .view b, .view span { text-shadow: none; }
+.view h1, .view h2, .view h3, .view .tile b, .view .professional-tile b { color: var(--heading) !important; }
+.view p, .view .note, .view .empty, .view label, .view th { color: var(--mu); }
+.metric-symbol, .professional-tile .dash-icon, .note-mark { background: var(--accent-soft) !important; color: var(--ac) !important; }
+.tile-feature, .dashboard-note { background: var(--panel-soft) !important; border-color: var(--bd) !important; }
+.dashboard-note b, .dashboard-note p, .dashboard-note a { color: var(--fg) !important; }
+.topbar button { background: var(--panel) !important; color: var(--fg) !important; border-color: var(--bd) !important; }
+[data-theme="dark"] { color-scheme: dark; }
+[data-theme="light"], [data-theme="warm"], [data-theme="orange"] { color-scheme: light; }
+[data-theme="dark"] .app-sidebar { background: #050708 !important; }
+[data-theme="dark"] .topbar { background: #080b0d !important; }
+[data-theme="dark"] .app-main, [data-theme="dark"] #app,
+[data-theme="dark"] .view, [data-theme="dark"] .app-footer { background: #080b0d !important; }
+[data-theme="dark"] .card, [data-theme="dark"] .metric, [data-theme="dark"] .dash-metric,
+[data-theme="dark"] .tile, [data-theme="dark"] .professional-tile,
+[data-theme="dark"] .appearance-card, [data-theme="dark"] .tour-win { background: #111619 !important; }
+[data-theme="dark"] .metric, [data-theme="dark"] input, [data-theme="dark"] select,
+[data-theme="dark"] textarea, [data-theme="dark"] .btn.g,
+[data-theme="dark"] .tile-feature, [data-theme="dark"] .dashboard-note { background: #191f23 !important; }
+[data-theme="dark"] .view h1, [data-theme="dark"] .view h2,
+[data-theme="dark"] .view h3, [data-theme="dark"] .view b,
+[data-theme="dark"] .view strong { color: #edf3f1 !important; }

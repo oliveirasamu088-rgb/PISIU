@@ -1,0 +1,45 @@
+{
+  "name": "psilog-desktop",
+  "version": "1.0.0",
+  "description": "Aplicativo desktop Psilog",
+  "main": "main.cjs",
+  "author": "Psilog",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis",
+    "dist:win:portable": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "br.com.psilog.desktop",
+    "productName": "Psilog",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "index.html",
+      "assets/**/*",
+      "css/**/*",
+      "js/**/*",
+      "README.md"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/img/favicon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
